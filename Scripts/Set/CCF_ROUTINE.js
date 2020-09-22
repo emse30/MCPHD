@@ -64,7 +64,7 @@ try {
         var capIDString = capId.getCustomID();	
 
         areaInspector = getAssignedToRecord();
-        scheduleInspectDate('Routine',dateAdd(null,90,'Y'),areaInspector);
+        scheduleInspectDate('Routine',dateAdd(null,90),areaInspector);
     }
 }
 catch (err) {

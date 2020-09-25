@@ -6,7 +6,7 @@ if (wfTask == 'Case Intake' && wfStatus == 'Accepted') {
 
 if (wfTask == 'Billing' && wfStatus == 'Complete Billing Letter' && balanceDue > 0) {
     activateTask('Final Processing');
-    updateAppStatus('Close Fees Outstanding', 'Close Fees Outstanding');
+    updateAppStatus('Closed/Fees Outstanding', 'Closed/Fees Outstanding');
 }
 
 if (wfTask == 'Evaluation' && wfStatus == 'Court Order Needed') {

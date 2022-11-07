@@ -50,7 +50,7 @@ if (getAppSpecific("Operator Permit") == 'CHECKED') {
 }
 }
 if (appMatch("EnvHealth/WQ/OWTS/NA") && wfTask == 'Site Survey' && wfStatus == 'Complete') {
-var supportStaff = hhcgetUserByDiscipline('WQBodyArtChildCareSupp');
+var supportStaff = hhcgetUserByDiscipline('WQPumpWellOWTSSupp'); // changed the discipline so this task gets assigned to Debra White - TASK0380741
 updateTask('Application Intake','Pending','Updated by script');
 assignTask('Application Intake', supportStaff);
 }
@@ -72,7 +72,15 @@ if (appMatch("EnvHealth/WQ/Pump/NA") && wfTask == 'Application Review' && wfStat
     var supportStaff = hhcgetUserByDiscipline('WQBodyArtChildCareSupp');
     assignTask('Permit Issuance', supportStaff);
 }
-if ((appMatch("EnvHealth/WQ/Well/NA") || appMatch("EnvHealth/WQ/Pump/NA")) && wfTask == 'Inspection' && wfStatus == 'Approved') {
+if ((appMatch("EnvHealth/WQ/Well/NA")) && wfTask == 'Inspection' && wfStatus == 'Approved') {
     var supportStaff = hhcgetUserByDiscipline('WQPoolsSupv');
     assignTask('Final Permit Creation', supportStaff);
 }
+if ((appMatch("EnvHealth/WQ/Pump/NA")) && wfTask == 'Water Sample Inspection' && wfStatus == 'Approved') {
+    var supportStaff = hhcgetUserByDiscipline('WQPoolsSupv');
+    assignTask('Closed', supportStaff);
+}
+if (appTypeString == "EnvHealth/WQ/File Search/NA" && wfTask == 'File Review' && matches(wfStatus,'Complete - Info Found', 'Complete - No Info Found')){
+		var supportStaff = hhcgetUserByDiscipline('WQFileSearch');  //Assigns the Workflow task "Case Closed" to WQFileSearch user discipline - TASK0383584
+		assignTask('Case Closed', supportStaff);		
+	}
